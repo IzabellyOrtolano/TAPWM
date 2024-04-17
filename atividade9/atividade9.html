@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcule seu IMC</title>
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.886);
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+
+    button {
+     background-color: rgb(171, 200, 255);
+     margin-top: 25px;
+     padding: 12px 20px;
+        border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-size: 16px;
+    }
+button:hover{
+    background-color: rgb(128, 128, 225);
+}
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Calculadora de IMC</h1>
+    <form id="imcForm">
+      <label for="altura">Altura (m):</label><br>
+      <input type="number" step="0.01" id="altura" required><br>
+      <label for="peso">Peso (kg):</label><br>
+      <input type="number" step="0.1" id="peso" required><br>
+      <button type="submit">Calcular IMC</button>
+    </form>
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    document.getElementById('imcForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      calcularIMC();
+    });
+
+    function calcularIMC() {
+      var altura = parseFloat(document.getElementById('altura').value);
+      var peso = parseFloat(document.getElementById('peso').value);
+
+      var imc = peso / (altura * altura);
+      var mensagem = '';
+
+      if (imc < 18.5) {
+        mensagem = 'Abaixo do peso';
+      } else if (imc >= 18.5 && imc < 24.9) {
+        mensagem = 'Peso normal';
+      } else if (imc >= 25 && imc < 29.9) {
+        mensagem = 'Sobrepeso';
+      } else if (imc >= 30 && imc < 34.9) {
+        mensagem = 'Obesidade grau I';
+      } else if (imc >= 35 && imc < 39.9) {
+        mensagem = 'Obesidade grau II';
+      } else {
+        mensagem = 'Obesidade grau III';
+      }
+
+      document.getElementById('resultado').innerHTML = 'Seu IMC é: ' + imc.toFixed(2) + '<br>' + mensagem;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Triângulo</title>
+ 
+</head>
+<body>
+    <script>
+    function verificarTriangulo() {
+   
+    var valorA = parseFloat(prompt("Digite o valor de A:"));
+    var valorB = parseFloat(prompt("Digite o valor de B:"));
+    var valorC = parseFloat(prompt("Digite o valor de C:"));
+
+    if (isNaN(valorA) || isNaN(valorB) || isNaN(valorC)) {
+        alert("Por favor, insira apenas números.");
+        return;
+    }
+
+    if ((valorB - valorC < valorA && valorA < valorB + valorC) &&
+        (valorA - valorC < valorB && valorB < valorA + valorC) &&
+        (valorA - valorB < valorC && valorC < valorA + valorB)) {
+
+        if (valorA === valorB && valorB === valorC) {
+            alert("O triângulo é equilátero.");
+        } else if (valorA === valorB || valorA === valorC || valorB === valorC) {
+            alert("O triângulo é isósceles.");
+        } else {
+            alert("O triângulo é escaleno.");
+        }
+    } else {
+        alert("Os valores fornecidos não formam um triângulo.");
+    }
+}
+
+verificarTriangulo();
+
+    </script>
+</body>
+</html>
